@@ -1,6 +1,6 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView # импоритируем необходимые дженерики
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.views.generic import TemplateView
 
 from .models import Post, Author
@@ -58,7 +58,7 @@ class News(View):
 
         return render(request, 'newapp/search.html', data)
 
-class PostCreateView(CreateView):
+class PostCreateView(PermissionRequiredMixin, CreateView):
     template_name = 'newapp/new_create.html'
     form_class = PostForm
     context_object_name = 'news'

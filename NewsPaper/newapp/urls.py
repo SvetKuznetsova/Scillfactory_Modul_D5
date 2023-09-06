@@ -9,7 +9,5 @@ urlpatterns = [
     path('new/create/', PostCreateView.as_view(), name='new_create'),
     path('new/update/<int:pk>/', PostUpdateView.as_view(), name='new_update'),
     path('new/delete/<int:pk>/', PostDeleteView.as_view(), name='new_delete'),
-    path('sign/', include('sign.urls')),
-    path('protect/', include('protect.urls')),
-    path('accounts/', include('allauth.urls')),
+
 ]
